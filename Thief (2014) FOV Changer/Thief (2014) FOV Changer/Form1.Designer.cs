@@ -64,6 +64,7 @@
             this.fov_Bar.Name = "fov_Bar";
             this.fov_Bar.Size = new System.Drawing.Size(234, 45);
             this.fov_Bar.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.fov_Bar, "Your current FOV value");
             this.fov_Bar.Value = 50;
             this.fov_Bar.Scroll += new System.EventHandler(this.fov_Bar_Scroll);
             // 

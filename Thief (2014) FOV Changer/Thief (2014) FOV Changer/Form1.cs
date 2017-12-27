@@ -3,6 +3,7 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,16 +19,9 @@ namespace Thief__2014__FOV_Changer
             InitializeComponent();
         }
 
-        RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Eidos Montreal\Thief\Graphics", true);
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (Registry.GetValue(myKey.ToString(), RegValueName, null) == null)
-            {
-                MessageBox.Show("It seems you don't have Thief (2014) installed!" + Environment.NewLine + "Registry not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Application.Exit();
-            }
+            RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Eidos Montreal\Thief\Graphics", true);
 
             int FOVBarValueConverted = fov_Bar.Value * 1000;
 
@@ -38,25 +32,9 @@ namespace Thief__2014__FOV_Changer
             MessageBox.Show("Added " + FOVBarValue + " (" + ConvertFOVNumberToHex + ")" + " to the base FOV!", "Done.", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        public static int FromHex(string value)
-        {
-            // strip the leading 0x
-            if (value.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
-            {
-                value = value.Substring(2);
-            }
-            return Int32.Parse(value, NumberStyles.HexNumber);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (Registry.GetValue(myKey.ToString(), RegValueName, null) == null)
-            {
-                MessageBox.Show("It seems you don't have Thief (2014) installed!" + Environment.NewLine + "Registry not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                Application.Exit();
-            }
-
+            RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Eidos Montreal\Thief\Graphics", true);
             var ReadFOV = myKey.GetValue(RegValueName);
 
             fov_Bar.Value = (Convert.ToInt32(ReadFOV) / 1000);
