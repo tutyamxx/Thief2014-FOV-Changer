@@ -71,6 +71,7 @@
             // lbl_FOV
             // 
             this.lbl_FOV.AutoSize = true;
+            this.lbl_FOV.BackColor = System.Drawing.Color.Transparent;
             this.lbl_FOV.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_FOV.Location = new System.Drawing.Point(69, 167);
             this.lbl_FOV.Name = "lbl_FOV";
@@ -81,9 +82,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Thief__2014__FOV_Changer.Properties.Resources.thief;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(41, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(234, 122);
+            this.pictureBox1.Size = new System.Drawing.Size(177, 118);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -113,6 +114,7 @@
             // lbl_Info1
             // 
             this.lbl_Info1.AutoSize = true;
+            this.lbl_Info1.BackColor = System.Drawing.Color.Transparent;
             this.lbl_Info1.Location = new System.Drawing.Point(44, 127);
             this.lbl_Info1.Name = "lbl_Info1";
             this.lbl_Info1.Size = new System.Drawing.Size(165, 13);
@@ -135,7 +137,8 @@
             // lbl_Info2
             // 
             this.lbl_Info2.AutoSize = true;
-            this.lbl_Info2.ForeColor = System.Drawing.Color.Red;
+            this.lbl_Info2.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_Info2.ForeColor = System.Drawing.Color.Orange;
             this.lbl_Info2.Location = new System.Drawing.Point(21, 140);
             this.lbl_Info2.Name = "lbl_Info2";
             this.lbl_Info2.Size = new System.Drawing.Size(225, 13);
@@ -146,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(258, 358);
             this.Controls.Add(this.lbl_Info2);

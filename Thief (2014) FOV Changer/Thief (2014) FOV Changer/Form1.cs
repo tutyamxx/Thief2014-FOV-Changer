@@ -2,8 +2,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,6 +15,18 @@ namespace Thief__2014__FOV_Changer
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private static bool IsGameInstalled(string softwareName)
+        {
+            var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") ?? Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall");
+
+            if (key == null)
+            {
+                return false;
+            }
+
+            return key.GetSubKeyNames().Select(keyName => key.OpenSubKey(keyName)).Select(subkey => subkey.GetValue("DisplayName") as string).Any(displayName => displayName != null && displayName.Contains(softwareName));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +44,12 @@ namespace Thief__2014__FOV_Changer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if(!IsGameInstalled("Thief"))
+            {
+                MessageBox.Show("Thief (2014) Steam version is not installed!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Environment.Exit(0);
+            }
+
             RegistryKey myKey = Registry.CurrentUser.OpenSubKey(@"Software\Eidos Montreal\Thief\Graphics", true);
             var ReadFOV = myKey.GetValue(RegValueName);
 
