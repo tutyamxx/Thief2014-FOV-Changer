@@ -4,4 +4,4 @@
 * Might not work for multi-monitor configurations!
 * I might update this at some point :p
 
-![Screenshot](fovchange.png)
+![Screenshot](fovchange2.png)
